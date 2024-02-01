@@ -1,0 +1,30 @@
+start: &start
+  duration: 1            
+a: &a
+  duration: 4
+  dependencies: 
+    - start: *start
+end:
+  duration: 2 
+  dependencies: 
+    - g: 
+        duration: 4
+        dependencies: 
+          - e: 
+              duration: 2 
+              dependencies:
+                - b: 
+                    duration: 3
+                    dependencies: 
+                      - start: *start
+                - c: 
+                    duration: 1
+                    dependencies: 
+                      - a: *a
+    - f:
+        duration: 1
+        dependencies: 
+          - d: 
+              duration: 4
+              dependencies:
+                - a: *a
